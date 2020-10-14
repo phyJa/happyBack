@@ -172,6 +172,8 @@ database in an application:
         This constructs:
         SELECT * FROM users WHERE name = Josh;
 
-    3. ORM
+    3. Object Relational Mapping (ORM)
     -> The highest level of abstraction. Each table
     is equivalent to a JavaScript class.
+    Each SELECT made is an object of the JavaScript
+    class.

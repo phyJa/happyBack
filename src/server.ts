@@ -2,6 +2,9 @@ import express from 'express';
 
 const app = express();
 
+//Make express understand json
+app.use(express.json());
+
 // All inside the next HTTP method (in this case, get) is a route
 // Recurso (resource): "/"
 
@@ -15,10 +18,10 @@ app.post(
         //console.log(request.query);
 
         //Route params
-        console.log(request.params);
+        //console.log(request.params);
 
         //Body params
-        //console.log(request.body);
+        console.log(request.body);
 
         response.json({ message: "Hello world!" });
 

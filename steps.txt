@@ -177,3 +177,11 @@ database in an application:
     is equivalent to a JavaScript class.
     Each SELECT made is an object of the JavaScript
     class.
+
+22. Create a folder and a file for
+the database.
+
+23. Create a configuration file
+called ormconfig.json to establish
+the configuration connection 
+with the database.

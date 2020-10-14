@@ -206,3 +206,14 @@ another folder called "migrations".
 27. Now we must tell the yarn typeorm command to understand TypeScript.
 For this, in the package.json file, add the following custom command (scripts):
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+
+28. In your ormconfig.json, add these two new properties:
+
+    // What are the migrations files
+    "migrations": [
+        "./src/database/migrations/*.ts"
+    ],
+    // Where the migrations will be created
+    "cli": {
+       "migrationsDir": "./src/database/migrations" 
+    }

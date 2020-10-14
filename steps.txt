@@ -202,3 +202,7 @@ version control of the databases. It contains the
 instructions to what must be done in a database given
 an operation. Inside the database folder, create
 another folder called "migrations".
+
+27. Now we must tell the yarn typeorm command to understand TypeScript.
+For this, in the package.json file, add the following custom command (scripts):
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"

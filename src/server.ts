@@ -1,5 +1,8 @@
 import express from 'express';
 
+// Database connection
+import './database/connection';
+
 const app = express();
 
 //Make express understand json

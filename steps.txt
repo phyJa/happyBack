@@ -217,3 +217,9 @@ For this, in the package.json file, add the following custom command (scripts):
     "cli": {
        "migrationsDir": "./src/database/migrations" 
     }
+
+29. You can run the following code to create the first migration:
+
+    yarn typeorm migration:create -n create_orphanages
+
+    (-n: name, create_orphanages: the chosen name)

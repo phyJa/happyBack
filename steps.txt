@@ -1,0 +1,177 @@
+Things to do before initializing the server
+
+1. Create a new folder which will contain the server
+
+2. In your terminal type "yarn init -y" or "npm init -y". It will create a package.json file
+
+3. Create the src folder containing the server.ts file. This file will be the most important
+concerning the server. Note that nodeJS does not understand typescript.
+
+4. Install the TypeScript: in your terminal, type "yarn add typescript -D" or
+"npm install typescript -D".
+
+5. Create the configuration file for the TypeScript. For this, run "yarn tsc --init" or 
+"npx tsc --init". A tsconfig.json will be generated.
+
+6. In the tsconfig.json file, change the "target" value to "es2017" or other that your
+environment understands.
+
+7. Install another dependency by running "yarn add ts-node-dev -D" or "npm install ts-node-dev -D".
+This dependency will allow us to use node and typescript and will help us automate the process of 
+reloading files if there is any change inside the server files.
+
+8. In your package.json file, type this new property:
+"scripts": {
+    "start": "tsnd src/server.ts"
+}
+
+Note: "tsnd" or "ts-node-dev". 
+
+9. Add the flag "--transpile-only" after "tsnd" in package.json. This will only convert TypeScript
+into JavaScript and will improve the time execution of our application because it will not care 
+about code errors anymore (this functionality stays with TypeScript).
+
+10. Add the flag "--ignore-watch node_modules" after "--transpile-only" in package.json.
+This will stop TypeScript converting codes from node_modules into JavaScript.
+
+11. Then, add also the flag "--respawn" after "--ignore-watch node_modules".
+This will make the server continue to run until we tell it to stop.
+
+12. Install express by running "yarn add expresss" or "npm install express" in the terminal.
+
+13. If you get an error by importing the TypeScript in your main server file, follow the
+recomendation of VSCode running "yarn add  @types/express -D" or "npm install @types/express -D"
+
+14. Starting the server:
+
+    14.1 - Importing express
+    import express from 'express';
+
+    14.2 - Store the express function in the main variable app
+    const app = express();
+
+    14.3 - Add the method to listen HTTP requirements
+    app.listen(3333); // localhost:3333 (The argument is the port)
+
+15. .get() method. An HTTP method.
+
+16. Inside the get method, define the route. The user access the first parameter, 
+then, the application executes the second argument:
+
+    app.get('/users',
+        (request, response) => {
+            return response.json("Hello World!");
+        }
+    )
+
+    Note that here we return the response in the json format.
+
+    Some other HTTP methods:
+    .get(): bring/get an information
+    .post(): create any new information inside the back-end
+    .put(): update/edit an existing information
+    .delete(): delete an existing information
+
+    Some parameters
+        1. Query params: they are send in the route by a question mark (?) and they
+        are concatenated by "&". It is used to do some search, filter, "paginação"
+            http://localhost:3333/aresource?paramname=paramvalue
+            > In JS/TS code: request.query
+        
+        2.Route params: used to identify a resource. For example, consider
+             http://localhost:3333/users/1 (we identify the user with id 1. It is quite useful
+             if we want to update or delete this user).
+        To use this parameter we must put "/:nameofparameter" at the end of the
+        resource.
+            > In JS/TS code: request.params
+
+        3. Body: all the information which is sent in a request. Generally it is composed 
+        by a large amount of data. It is quite useful in a register form (username, email, address,
+        password, birth etc), for example.
+            > In JS/TS code: request.body
+
+17. Install Insomnia Core to be able to work with other HTTP methods like POST,
+PUT and DELETE.
+
+18. With Insomnia, we test the Request Body with the POST method.
+ Request Body: data for the creation or update of a register.
+
+19. However, even with Insomnia, if we send, for example this data:
+    
+    {
+        "name": "Dani",
+        "age": "23"
+    }
+
+in the request body, the console.log of this code
+
+    app.post('/users',
+        (request, response) => {
+            console.log(request.body);
+            //Test: send an array
+            const users = [
+                {name: "Diego", age: 32},
+                {name: "John", age: 25}
+            ];
+
+            return response.json(users);
+        }
+    )
+
+will return "undefined". That's because the express does not understand the json format.
+
+20. For this, add this line after defining the app variable
+    app.use(express.json());
+    Other parameters besides Request Body are:
+    - Route Params: identify which resource (.../users, for example) we want to update or delete.
+        Use:
+            app.delete('/users/:id',
+                (request, response) => {
+                    console.log(request.params);
+                    //Test: send an array
+                    const users = [
+                        {name: "Diego", age: 32},
+                        {name: "John`", age: 25}
+                    ];
+
+                    return response.json(users);
+                }
+            )
+        - Query Params: list data, filter, organization. (There must be some exclamation marks
+        in the URL of the request)
+        Use:
+            app.get('/users/',
+                (request, response) => {
+                    console.log(request.query);
+                    const users = [
+                        {name: "Diego", age: 32},
+                        {name: "John`", age: 25}
+                    ]
+                    return response.json(users);
+                }
+            )
+        
+
+21. Install typeorm and sqlite3.
+There are three ways to use a 
+database in an application:
+
+    1. Native drivers:
+    -> No level of abstraction: you write the SQL language
+    itself
+        Example:
+        sqlite3.query("SELECT * FROM users");
+
+    2. Query builder (KnexJS)
+    -> More abstraction: we write
+    the queries with JavaScript.
+        
+        Example:
+        knex("users").select("*").where("name", "Josh");
+        
+        This constructs:
+        SELECT * FROM users WHERE name = Josh;
+
+    3. ORM
+    -> The highest level of abstraction. Each table
+    is equivalent to a JavaScript class.

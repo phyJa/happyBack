@@ -185,3 +185,20 @@ the database.
 called ormconfig.json to establish
 the configuration connection 
 with the database.
+
+24. Create a file called connection
+inside the database folder and inside it, 
+type
+
+    import { createConnection } from 'typeorm';
+
+    createConnection();
+
+25. Import the file of the last step
+in the server file.
+
+26. Here we are going to use migrations, a kind of 
+version control of the databases. It contains the 
+instructions to what must be done in a database given
+an operation. Inside the database folder, create
+another folder called "migrations".

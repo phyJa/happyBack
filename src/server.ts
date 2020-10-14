@@ -2,4 +2,16 @@ import express from 'express';
 
 const app = express();
 
-app.listen();
+app.get(
+
+    "/", 
+
+    (request, response) => {
+
+        response.send("Hello world!");
+
+    }
+
+);
+
+app.listen(3333);

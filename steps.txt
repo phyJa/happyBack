@@ -509,3 +509,22 @@ we must import them from express
 49. Execute the OrphanagesController.create function inside the post method of the routes:
     routes.post("/orphanages", OrphanagesController.create);
 
+50. Now we proceed in the OrphanagesController object to create a method to list the orphanages
+(index method) reapeating the previous step to make its corresponding route.
+
+    // In the controller file:
+    async index(request: Request, response: Response) {
+
+        const orphanagesRepository = getRepository(Orphanage);
+        
+        const orphanages = await orphanagesRepository.find();
+
+        return response.json(orphanages);
+
+    },
+
+    // In the routes file
+    routes.get("/orphanages", OrphanagesController.index);
+
+
+

@@ -223,3 +223,7 @@ For this, in the package.json file, add the following custom command (scripts):
     yarn typeorm migration:create -n create_orphanages
 
     (-n: name, create_orphanages: the chosen name)
+
+30. After creating a migration (see the one about creating a table), type the following command
+to execute the migration:
+    yarn typeorm migration:run

@@ -62,7 +62,9 @@ app.post(
 
         await orphanagesRepository.save(orphanage);
 
-        response.json({ message: "Hello world!" });
+        // 201: Code which indicates something was
+        // created.
+        return response.status(201).json(orphanage);
 
     }
 

@@ -323,3 +323,33 @@ it to the server (through Insomnia) in the request body.
 
     // Import the model
     import Orphanage from './models/Orphanage';
+
+41. Add the following lines inside the server function. Note that this function must now be
+async.
+
+    const orphanagesRepository = getRepository(Orphanage);
+        
+    const orphanage = orphanagesRepository.create(
+           
+            {
+
+                name,
+
+                latitude,
+                
+                longitude,
+                
+                about,
+                
+                instructions,
+                
+                opening_hours,
+                
+                open_on_weekends
+
+            }
+
+        );
+
+        // Save in the database
+        await orphanagesRepository.save(orphanage);

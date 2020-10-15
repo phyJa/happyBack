@@ -16,7 +16,7 @@ app.post(
 
     "/orphanages", 
 
-    (request, response) => {
+    async (request, response) => {
 
         const {
             
@@ -36,7 +36,31 @@ app.post(
         
         } = request.body;
 
+        const orphanagesRepository = getRepository(Orphanage);
         
+        const orphanage = orphanagesRepository.create(
+           
+            {
+
+                name,
+
+                latitude,
+                
+                longitude,
+                
+                about,
+                
+                instructions,
+                
+                opening_hours,
+                
+                open_on_weekends
+
+            }
+
+        );
+
+        await orphanagesRepository.save(orphanage);
 
         response.json({ message: "Hello world!" });
 

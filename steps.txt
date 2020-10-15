@@ -178,26 +178,23 @@ database in an application:
     Each SELECT made is an object of the JavaScript
     class.
 
-22. Create a folder and a file for
-the database.
+22. Create a folder and a file inside it for the database.
 
-23. Create a configuration file
-called ormconfig.json to establish
-the configuration connection 
-with the database.
+23. Create a configuration file called ormconfig.json to establish
+the configuration connection with the database and type:
+    "type": "sqlite",
+    "database": "./src/database/database.sqlite"
 
-24. Create a file called connection
-inside the database folder and inside it, 
+24. Create a file called 'connection' inside the database folder and inside it, 
 type
 
     import { createConnection } from 'typeorm';
 
     createConnection();
 
-25. Import the file of the last step
-in the server file.
+25. Import the file of the last step in the server file.
 
-26. Here we are going to use migrations, a kind of 
+26. Now we are going to use migrations, a kind of 
 version control of the databases. It contains the 
 instructions to what must be done in a database given
 an operation. Inside the database folder, create
@@ -227,3 +224,10 @@ For this, in the package.json file, add the following custom command (scripts):
 30. After creating a migration (see the one about creating a table), type the following command
 to execute the migration:
     yarn typeorm migration:run
+
+Note: to undo a migration, use the command 
+    yarn typeorm migration:revert
+
+31. Use the open source software beekeeper studio to visualize the created table.
+
+32

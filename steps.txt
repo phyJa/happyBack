@@ -353,3 +353,7 @@ async.
 
         // Save in the database
         await orphanagesRepository.save(orphanage);
+
+42. Add a new property to the configuration
+file so that the typeorm can find where are
+the entities/models.

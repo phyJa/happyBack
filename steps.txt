@@ -174,7 +174,8 @@ database in an application:
 
     3. Object Relational Mapping (ORM)
     -> The highest level of abstraction. Each table
-    is equivalent to a JavaScript class.
+    is equivalent to a JavaScript class. We call these 
+    classes "models".
     Each SELECT made is an object of the JavaScript
     class.
 
@@ -230,4 +231,7 @@ Note: to undo a migration, use the command
 
 31. Use the open source software beekeeper studio to visualize the created table.
 
-32
+32. It's time to create the JavaScript class models for the tables. For this create a folder
+inside "src" called "models". 
+
+33. Then, create "Orphanage.ts" to start to create a class.

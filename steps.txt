@@ -216,7 +216,7 @@ For this, in the package.json file, add the following custom command (scripts):
        "migrationsDir": "./src/database/migrations" 
     }
 
-29. You can run the following code to create the first migration:
+29. You can run the following code in your terminal to create the first migration:
 
     yarn typeorm migration:create -n create_orphanages
 
@@ -262,3 +262,11 @@ Find the "strictPropertyInitialization" property, uncomment it and change its va
     "strictPropertyInitialization": false
 
 With this we can define variables in the class without values.
+
+35. Next we need to uncomment two properties to enable the decorator API of TypeScript (tsconfig.json):
+    "experimentalDecorators": true, 
+    "emitDecoratorMetadata": true,
+
+36. Add this before your class definition (Orphanage)
+
+    import { Entity, Column, PrimaryGeneratedColumn} from 'typeorm';

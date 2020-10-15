@@ -270,3 +270,43 @@ With this we can define variables in the class without values.
 36. Add this before your class definition (Orphanage)
 
     import { Entity, Column, PrimaryGeneratedColumn} from 'typeorm';
+
+Decorators are used in classes, properties and functions.
+
+37. Use the decorator like this:
+    
+    @Entity("orphanages")
+
+    right before your class definition. Then, typeorm will automatically understand that
+    it this class is related to the table "orphanages".
+
+38. Write the decorators to the properties, like this:
+
+@Entity("orphanages")
+export default class Orphanage {
+
+    @PrimaryGeneratedColumn("increment") // The id property is the primary column in the database automatically incremented
+    id: number;
+
+    @Column() // The name property is a column in the database
+    name: string;
+
+    @Column()
+    latitude: number;
+
+    @Column()
+    longitude: number;
+
+    @Column()
+    about: string;
+
+    @Column()
+    instructions: string;
+
+    @Column()
+    opening_hours: string;
+
+    @Column()
+    open_on_weekends: boolean;
+
+}

@@ -530,6 +530,9 @@ we must import them from express
 51. After creating migrations for the image table and executing it, we install
 a library called "multer" to deal with upload files.
 
+52. Inside the "src" folder, create a another called "config" and inside it, a file
+called "upload.ts".
+
 
 
 

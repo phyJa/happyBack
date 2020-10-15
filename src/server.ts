@@ -8,14 +8,31 @@ const app = express();
 //Make express understand json
 app.use(express.json());
 
-// All inside the next HTTP method (in this case, get) is a route
-// Recurso (resource): "/"
+app.post(
 
-app.get(
-
-    "/", 
+    "/orphanages", 
 
     (request, response) => {
+
+        const {
+            
+            name, // name: name
+
+            latitude,
+            
+            longitude,
+            
+            about,
+            
+            instructions,
+            
+            opening_hours,
+            
+            open_on_weekends
+        
+        } = request.body;
+
+        
 
         response.json({ message: "Hello world!" });
 

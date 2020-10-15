@@ -310,3 +310,7 @@ export default class Orphanage {
     open_on_weekends: boolean;
 
 }
+
+39. Now we have to create a route to create an orphanage.
+The first thing to do is to write some test data and pass
+it to the server (through Insomnia) in the request body.

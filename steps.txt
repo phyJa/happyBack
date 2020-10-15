@@ -434,3 +434,78 @@ export default routes;
 
 45. Import these routes in your server.ts file and make the app use the routes:
     app.use(routes);
+
+46. Let's organize it even better: create another folder called controllers and inside it,
+a file called "OrphanagesController.ts" and inside it, export an object whose function "create"
+has all the functionality of creating a new orphanage. That is:
+
+    import { getRepository } from "typeorm";
+
+    import Orphanage from '../models/Orphanage';
+
+    export default {
+        
+        async create(request, response) {
+            
+            const {
+                
+                name, // name: name
+
+                latitude,
+                
+                longitude,
+                
+                about,
+                
+                instructions,
+                
+                opening_hours,
+                
+                open_on_weekends
+            
+            } = request.body;
+
+            const orphanagesRepository = getRepository(Orphanage);
+            
+            const orphanage = orphanagesRepository.create(
+                
+                {
+
+                    name,
+
+                    latitude,
+                    
+                    longitude,
+                    
+                    about,
+                    
+                    instructions,
+                    
+                    opening_hours,
+                    
+                    open_on_weekends
+
+                }
+
+            );
+
+            await orphanagesRepository.save(orphanage);
+
+            // 201: Code which indicates something was
+            // created.
+            return response.status(201).json(orphanage);
+
+        }
+        
+    };
+
+47. Now the problem is that TypeScript doesn't know what is request and response. To solve this,
+we must import them from express
+    import { Request, Response } from 'express';
+
+48. Now import the OrphanagesController in the routes:
+    import OrphanagesController from './controllers/OrphanagesController';
+
+49. Execute the OrphanagesController.create function inside the post method of the routes:
+    routes.post("/orphanages", OrphanagesController.create);
+

@@ -234,4 +234,31 @@ Note: to undo a migration, use the command
 32. It's time to create the JavaScript class models for the tables. For this create a folder
 inside "src" called "models". 
 
-33. Then, create "Orphanage.ts" to start to create a class.
+33. Then, create "Orphanage.ts" to start to create a class. Type the class:
+
+        export default class Orphanage {
+
+            id: number;
+
+            name: string;
+
+            latitude: number;
+
+            longitude: number;
+
+            about: string;
+
+            instructions: string;
+
+            opening_hours: string;
+
+            open_on_weekends: boolean;
+
+        }
+
+34. You will see that error appears. For this, we will have to change our tsconfig.json file.
+Find the "strictPropertyInitialization" property, uncomment it and change its value to false.
+
+    "strictPropertyInitialization": false
+
+With this we can define variables in the class without values.

@@ -1,5 +1,9 @@
 import express from 'express';
 
+import { getRepository } from "typeorm";
+
+import Orphanage from './models/Orphanage';
+
 // Database connection
 import './database/connection';
 

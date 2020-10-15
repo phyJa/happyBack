@@ -527,4 +527,9 @@ we must import them from express
     routes.get("/orphanages", OrphanagesController.index);
 
 
+51. After creating migrations for the image table and executing it, we install
+a library called "multer" to deal with upload files.
+
+
+
 

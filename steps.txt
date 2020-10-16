@@ -587,3 +587,10 @@ add this inside the class:
     
     @OneToMany(() => Image, image => image.orphanages)
     images: Image[];
+
+57. Now we must do the inverse relationship in the Image class file: import a function
+called ManyToOne, JoinColumn and the Orphanage class and make the inverse process:
+
+    @ManyToOne(()=> Orphanage, orphanage => orphanage.images)
+    @JoinColumn({ name: "orphanage_id" })
+    orphanage: Orphanage;

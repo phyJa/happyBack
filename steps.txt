@@ -630,3 +630,11 @@ functions in the Controller, add the following parameter:
 61. Create a views folder. Inside it there will be all files which handle how the data
 will be visualized by the front-end. Note also that we need to give more information
 to display the images.
+
+62. Create a file to display the view of the images and insert it into the orphanages
+view file.
+
+63. In your server file, add the following configuration to access the images:
+    app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
+
+

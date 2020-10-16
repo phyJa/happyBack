@@ -620,3 +620,9 @@ And add
     images
 
 inside the orphanage const
+
+60. Now, inside the arguments of the find methods, inside  "index" and "show"
+functions in the Controller, add the following parameter:
+    {
+        relations: ["images"]
+    }

@@ -626,3 +626,7 @@ functions in the Controller, add the following parameter:
     {
         relations: ["images"]
     }
+
+61. Create a views folder. Inside it there will be all files which handle how the data
+will be visualized by the front-end. Note also that we need to give more information
+to display the images.

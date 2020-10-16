@@ -594,3 +594,11 @@ called ManyToOne, JoinColumn and the Orphanage class and make the inverse proces
     @ManyToOne(()=> Orphanage, orphanage => orphanage.images)
     @JoinColumn({ name: "orphanage_id" })
     orphanage: Orphanage;
+
+58. In "OneToMany" , add this third parameter which will deal with the automatic insertion
+and update of the related images:
+        
+        {
+            // This will automatically insert and update the associated images
+            cascade:["insert", "update"]
+        }

@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn} from 'typeorm';
+
+import Image from './Image';
 
 @Entity("orphanages")
 export default class Orphanage {
@@ -26,5 +28,12 @@ export default class Orphanage {
 
     @Column()
     open_on_weekends: boolean;
+
+    // The first parameter is a function that returns a type of the return
+    // Second parameter: given an image, what is the field inside the image
+    // that returns the inverse relationship, i.e, the orphanage.
+    @OneToMany(() => Image, image => image.orphanages)
+    @JoinColumn({ name: "orphanage_id"}) // The column that establishes the relationship
+    images: Image[];
 
 }

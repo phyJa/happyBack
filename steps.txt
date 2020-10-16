@@ -579,4 +579,11 @@ called "upload.ts".
 database. Note now, that the request body cannot be a JSON file anymore, but a Multipart Form
 instead.
 
-55. To register the images in the database, create a model for the image.
+55. To register the images in the database, create a model for the image. And in the
+Orphanage.ts model, import a function called OneToMany (One orphanage to Many images). 
+
+56. Still in the Orphanage.ts model, import the Orphanage model and
+add this inside the class:
+    
+    @OneToMany(() => Image, image => image.orphanages)
+    images: Image[];

@@ -1,3 +1,5 @@
 node_modules/
 
 steps.txt
+
+yarn-error.log

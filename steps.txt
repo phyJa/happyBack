@@ -637,4 +637,7 @@ view file.
 63. In your server file, add the following configuration to access the images:
     app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
 
+64. Now, we must deal with errors: install express-async-errors to deal with errors
+inside async functions.
+
 

@@ -642,4 +642,4 @@ inside async functions.
 
 65. To deal with validation, install Yup.
 
-
+66. Install cors to enable other FrontEnds to access your API.

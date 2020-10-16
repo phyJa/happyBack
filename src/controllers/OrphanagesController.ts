@@ -45,7 +45,7 @@ export default {
         
         const {
             
-            nome, // name: name
+            name, // name: name
 
             latitude,
             
@@ -74,7 +74,7 @@ export default {
         
         const data = {
 
-            nome,
+            name,
 
             latitude,
             
@@ -92,49 +92,49 @@ export default {
 
         };
 
-        // const schema = Yup.object().shape(
+        const schema = Yup.object().shape(
             
-        //     {
+            {
 
-        //         name: Yup.string().required(),
+                name: Yup.string().required(),
 
-        //         latitude: Yup.number().required(),
+                latitude: Yup.number().required(),
 
-        //         longitude: Yup.number().required(),
+                longitude: Yup.number().required(),
 
-        //         about: Yup.string().required().max(300),
+                about: Yup.string().required().max(300),
 
-        //         instructions: Yup.string().required(),
+                instructions: Yup.string().required(),
 
-        //         opening_hours: Yup.string().required(),
+                opening_hours: Yup.string().required(),
 
-        //         open_on_weekends: Yup.boolean().required(),
+                open_on_weekends: Yup.boolean().required(),
 
-        //         images: Yup.array(
+                images: Yup.array(
 
-        //             Yup.object().shape(
+                    Yup.object().shape(
 
-        //                 {
-        //                     path: Yup.string().required()
-        //                 }
+                        {
+                            path: Yup.string().required()
+                        }
 
-        //             )
+                    )
 
-        //         )
+                )
 
-        //     }
+            }
 
-        // );
+        );
 
-        // await schema.validate(
+        await schema.validate(
 
-        //     data, 
+            data, 
             
-        //     {
-        //         abortEarly: false
-        //     }
+            {
+                abortEarly: false
+            }
 
-        // );
+        );
 
         const orphanage = orphanagesRepository.create(data);
 

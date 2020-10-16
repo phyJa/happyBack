@@ -640,4 +640,6 @@ view file.
 64. Now, we must deal with errors: install express-async-errors to deal with errors
 inside async functions.
 
+65. To deal with validation, install Yup.
+
 

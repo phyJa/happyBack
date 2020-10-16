@@ -532,7 +532,47 @@ a library called "multer" to deal with upload files.
 
 52. Inside the "src" folder, create a another called "config" and inside it, a file
 called "upload.ts".
+    Code in upload.ts:
+    
+    import multer from 'multer';
 
+    // To add with path folders (from node)
+    import path from "path";
 
+    // See the documentation of multer for more explanations
+
+    export default {
+
+        storage: multer.diskStorage(
+
+            {
+            
+                destination: path.join(__dirname, "..", "..", "uploads"),
+
+                filename: (request, file, cb) => {
+
+                    // Changing the fileName to reduce the possibility of two equal names
+                    const fileName = `${Date.now()}-${file.originalname}`;
+
+                    // As no error is expected, we pass null as the first parameter
+                    cb(null, fileName);
+
+                }
+            
+            }
+        
+        )
+
+    };
+
+53. Now we must add some more code to the routes file:
+    import multer from 'multer';
+
+    import uploadConfig from './config/upload';
+
+    const upload = multer(uploadConfig);
+
+    // Add a second parameter (upload.array) to the following route:
+    routes.post("/orphanages", upload.array("images"), OrphanagesController.create);
 
 

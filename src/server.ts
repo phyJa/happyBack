@@ -15,6 +15,8 @@ import errorHandler from './errors/handler';
 
 const app = express();
 
+app.use(cors());
+
 //Make express understand json
 app.use(express.json());
 

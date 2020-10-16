@@ -32,7 +32,18 @@ export default class Orphanage {
     // The first parameter is a function that returns a type of the return
     // Second parameter: given an image, what is the field inside the image
     // that returns the inverse relationship, i.e, the orphanage.
-    @OneToMany(() => Image, image => image.orphanage)
+    @OneToMany(
+
+        () => Image,
+
+        image => image.orphanage, 
+
+        {
+            // This will automatically insert and update the associated images
+            cascade:["insert", "update"]
+        }
+
+    )
     @JoinColumn({ name: "orphanage_id"}) // The column that establishes the relationship
     images: Image[];
 

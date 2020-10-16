@@ -49,6 +49,15 @@ export default {
         } = request.body;
 
         const orphanagesRepository = getRepository(Orphanage);
+
+        // A little hack to force it to be of an array type
+        const requestImages = request.files as Express.Multer.File[];
+
+        const images = requestImages.map(
+            image => {
+                return { path: image.filename}
+            }
+        );
         
         const orphanage = orphanagesRepository.create(
             
@@ -66,7 +75,9 @@ export default {
                 
                 opening_hours,
                 
-                open_on_weekends
+                open_on_weekends,
+
+                images
 
             }
 

@@ -602,3 +602,21 @@ and update of the related images:
             // This will automatically insert and update the associated images
             cascade:["insert", "update"]
         }
+
+59. Now we must add the functionality of adding the image in the controller.
+Add this in the create method:
+
+        // A little hack to force it to be of an array type
+        const requestImages = request.files as Express.Multer.File[];
+
+        const images = requestImages.map(
+            image => {
+                return { path: image.filename}
+            }
+        );
+
+And add 
+ 
+    images
+
+inside the orphanage const
